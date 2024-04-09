@@ -6,10 +6,7 @@ import lk.ijse.SpringBootDemo.reqAndResp.secure.SignUp;
 import lk.ijse.SpringBootDemo.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/auth")
@@ -27,4 +24,9 @@ public class UserController {
         return ResponseEntity.ok(authenticationService.signIn(signInReq));
     }
 
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtAuthResponse> refreshToken(@RequestParam("refreshToken") String refreshToken) {
+        System.out.println(refreshToken);
+        return ResponseEntity.ok(authenticationService.refreshToken(refreshToken));
+    }
 }

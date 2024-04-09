@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class DataConvert {
@@ -30,6 +32,10 @@ public class DataConvert {
 
     public UserDTO userEntityConvertToUserDto(UserEntity userEntity){
         return modelMapper.map(userEntity, UserDTO.class);
+    }
+
+    public List<CustomerDTO> toCustomerDTOList(List<CustomerEntity> customers) {
+        return modelMapper.map(customers, List.class);
     }
 
 }

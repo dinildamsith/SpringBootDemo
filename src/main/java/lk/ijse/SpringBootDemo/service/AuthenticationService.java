@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 public interface AuthenticationService {
     JwtAuthResponse signIn(SignIn signIn);
     JwtAuthResponse signUp(SignUp signUp);
+
+    JwtAuthResponse refreshToken(String accessToken);
 }

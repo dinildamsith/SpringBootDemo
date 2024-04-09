@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -30,5 +32,10 @@ public class CustomerServiceIMPL implements CustomerService {
     @Override
     public void deleteCustomer(String id) {
 
+    }
+
+    @Override
+    public List<CustomerDTO> getAllCustomers() {
+        return dataConvert.toCustomerDTOList(customerRepo.findAll());
     }
 }
